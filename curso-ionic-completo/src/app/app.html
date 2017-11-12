@@ -1,0 +1,39 @@
+<ion-menu [content]="content">
+  <ion-header>
+    <div class="user-identification">
+      <div class="user-name">
+        {{ userInfo.name }}
+      </div>
+      <div class="user-email">
+        {{ userInfo.email }}
+      </div>
+    </div>
+  </ion-header>
+
+  <ion-content class="menu-content" id="content-special-bg">
+    <ion-list>
+      <button menuClose ion-item (click)="openPage()">
+        <ion-icon name="md-pint"></ion-icon>
+        Parceiros
+      </button>
+      <button menuClose ion-item (click)="openPage()">
+        <ion-icon name="card"></ion-icon>
+        Meu Cartão
+      </button>
+      <button menuClose ion-item (click)="openPage()">
+        <ion-icon name="star"></ion-icon>
+        Planos
+      </button>
+      <button menuClose ion-item (click)="openPage(profilePage)">
+        <ion-icon name="contact"></ion-icon>
+        Meu Perfil
+      </button>
+      <button menuClose ion-item (click)="logOut()">
+        <ion-icon name="md-log-out"></ion-icon>
+        Sair
+      </button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-nav id="nav" #content [root]="rootPage"></ion-nav>

@@ -1,0 +1,98 @@
+<ion-header class="opaque">
+  <ion-navbar no-border-bottom>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <div class="infos">
+    <form (ngSubmit)="onSubmit()" #signupForm="ngForm">
+      <ion-list>
+        <h1 class="center">CADASTRE-SE</h1>
+        <ion-item>
+          <ion-input [(ngModel)]="user.name" name="name"
+            type="text" placeholder="Usuário"
+            #name="ngModel" required
+            minlength="4">
+          </ion-input>
+        </ion-item>
+
+        <div class="form-error" *ngIf="name.invalid && (name.dirty || name.touched)">
+          <div *ngIf="name.errors.required">
+            <span>Nome é obrigatório</span>
+          </div>
+          <div *ngIf="name.errors.minlength">
+            <span>Nome deve conter pelo menos 4 caracteres</span>
+          </div>
+          <div *ngIf="name.errors.forbiddenName">
+            <span>Nome Arthur é proibido</span>
+          </div>
+        </div>
+
+        <ion-item>
+          <ion-input [(ngModel)]="user.email" type="text"
+            placeholder="Email" name="email"
+            #email="ngModel" required>
+          </ion-input>
+        </ion-item>
+
+        <div class="form-error" *ngIf="email.invalid && email.touched">
+          <div *ngIf="email.errors.required">
+            <span>Email é obrigatório</span>
+          </div>
+        </div>
+
+        <ion-item>
+          <ion-input [(ngModel)]="user.confirmEmail" type="text"
+            placeholder="Confirmar Email" name="confirmEmail"
+            required #confirmEmail="ngModel">
+          </ion-input>
+        </ion-item>
+
+        <div class="form-error" *ngIf="confirmEmail.invalid && (confirmEmail.dirty || confirmEmail.touched)">
+          <div *ngIf="confirmEmail.errors.required">
+            <span>Confirmar o email é obrigatório</span>
+          </div>
+        </div>
+
+        <div class="form-error" *ngIf="user.email != user.confirmEmail &&  confirmEmail.touched">
+          <span>Email e confirmar email devem ser iguais</span>
+        </div>
+
+        <ion-item>
+          <ion-input [(ngModel)]="user.password" type="password"
+            placeholder="Senha" name="password"
+            #password="ngModel" minlength="6"
+            maxlength="12" required>
+          </ion-input>
+        </ion-item>
+        <div class="form-error" *ngIf="password.invalid && (password.dirty || password.touched)">
+          <div *ngIf="password.errors.required">
+            <span>Confirmar o senha é obrigatório</span>
+          </div>
+          <div *ngIf="password.errors.minlength">
+            <span>Senha deverá conter ao menos 6 caracteres</span>
+          </div>
+          <div *ngIf="password.errors.maxlength">
+            <span>Senha deverá conter no máximo 12 caracteres</span>
+          </div>
+        </div>
+        <ion-item>
+          <ion-input [(ngModel)]="user.confirmPassword" type="password"
+            placeholder="Confirmar Senha" name="confirmPassword"
+            #confirmPassword="ngModel" required></ion-input>
+        </ion-item>
+        <div class="form-error" *ngIf="confirmPassword.invalid &&  confirmPassword.touched">
+          <div *ngIf="confirmPassword.errors?.required">
+            <span>Confirmar o senha é obrigatório</span>
+          </div>
+        </div>
+        <div class="form-error" *ngIf="user.password != user.confirmPassword &&  confirmPassword.touched">
+          <span>Senha e confirmar senha devem ser iguais</span>
+        </div>
+      </ion-list>
+      <button ion-button block type="submit" [disabled]="signupForm.form.invalid">CRIAR MINHA CONTA</button>
+    </form>
+    <div class="center back-wrapper">
+      <span class="back" (click)="back()">JÁ É CADASTRADO? ENTRE NA SUA CONTA</span>
+    </div>
+  </div>
+</ion-content>

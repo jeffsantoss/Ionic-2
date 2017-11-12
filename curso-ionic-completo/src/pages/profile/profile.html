@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Parceiros</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="photo-div">
+    <p> Atualizar minha foto </p>
+    <div *ngIf="image == null" (tap)="sendImage()">
+      <ion-icon name="ios-contact" class="user-photo-default"></ion-icon>
+    </div>
+
+    <div *ngIf="image != null" (tap)="sendImage()">
+      <img [src]="image">
+    </div>
+  </div>
+</ion-content>

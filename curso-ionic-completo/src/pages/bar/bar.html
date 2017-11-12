@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title></ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <!--
+  <drink *ngIf="drinkComponent"
+    [name]="drink.name" [description]="drink.description"
+    [size]="drink.size" [photoUrl]="drink.photo"
+    (exitComponent)="exitComponent($event)">
+  </drink>-->
+
+  <drink *ngIf="drinkComponent"
+    [name]="drink.name" [size]="drink.size"
+    [photoUrl]="drink.photo" (tap)="exit()">
+  </drink>
+
+  <div class="image-wrapper">
+    <img [src]="barInfo.photo">
+    <div class="back-shadow">
+      <span class="bar-name">{{barInfo.name}}</span>
+    </div>
+  </div>
+  <div padding> <!-- bota 16px de padding em todo conteúdo -->
+    <div>
+      <p>{{barInfo.description}}</p>
+    </div>
+    <div class="info-wrapper">
+      <h2>ENDEREÇO</h2>
+      <p> <ion-icon name="pin"></ion-icon>
+      {{barInfo.address}}</p>
+    </div>
+    <div class="info-wrapper">
+      <h2>TELEFONE</h2>
+      <p>  <ion-icon name="call"></ion-icon>
+      {{barInfo.phone}}</p>
+    </div>
+    <div class="info-wrapper">
+      <h2>HORÁRIO</h2>
+      <p> <ion-icon name="time"></ion-icon>
+      {{barInfo.opening_hours}}</p>
+    </div>
+    <h2>OPÇÕES DE CERVEJAS</h2>
+    <ion-slides>
+      <ion-slide *ngFor="let drink of barInfo.drinks">
+        <ion-card (click)="chooseDrink(drink)">
+          <img src="{{drink.photo}}"/>
+          <ion-card-content>
+            <ion-card-title>
+              {{drink.name}}
+            </ion-card-title>
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+    </ion-slides>
+  </div>
+</ion-content>

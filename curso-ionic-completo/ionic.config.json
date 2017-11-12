@@ -1,0 +1,14 @@
+{
+  "name": "simplesmenteCerveja",
+  "app_id": "f903700d",
+  "type": "ionic-angular",
+  "proxies": [
+    {
+      "path": "/api/",
+      "proxyUrl": "https://cerveja-api.herokuapp.com/"
+    }
+  ],
+  "integrations": {
+    "cordova": {}
+  }
+}

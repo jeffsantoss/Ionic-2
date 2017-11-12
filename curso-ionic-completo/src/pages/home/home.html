@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Parceiros</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let partners of indexOfPartners" col-6>
+        <ion-card (tap)="openCard(partners.id)" tappable>
+          <img [src]="partners.photo"/>
+          <ion-card-content>
+            <ion-card-title>
+              <!-- truncate é o nome da pipe a ser utilizada, então usamos : e colocamos o parâmetro que a pipe recebe-->
+              {{partners.name | truncate:15}}
+            </ion-card-title>
+            <p>{{partners.address | truncate:23}}</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content>
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
